@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-colaborador-add',
   templateUrl: './colaborador-add.component.html',
-  styleUrls: ['./colaborador-add.component.css']
+  styleUrls: ['./colaborador-add.component.css'],
 })
 export class ColaboradorAddComponent implements OnInit {
   colaboradorForm!: FormGroup;

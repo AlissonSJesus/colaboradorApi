@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,11 @@ import { ColaboradorGetComponent } from './colaborador-get/colaborador-get.compo
 
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import ptBr from '@angular/common/locales/br';
+import { registerLocaleData } from '@angular/common'
+
+registerLocaleData(ptBr, 'pt-BR');
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
