@@ -1,1 +1,75 @@
-<p>colaborador-add works!</p>
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="colaboradorForm">
+            <!-- Inicio do bloco nome -->
+            <div class="form-group">
+                <label class="fw-bold" for="name">Nome do Colaborador:</label>
+                <input class="form-control" type="text" placeholder="Digite um nome" formControlName="nome" #nome>
+            </div>
+            <!-- Mensagem de alerta -->
+            <div *ngIf="colaboradorForm.controls['nome'].invalid && (colaboradorForm.controls['nome'].dirty || colaboradorForm.controls['nome'].touched)"
+                class="alert alert-danger p-2 m-2">
+                <div *ngIf="colaboradorForm.controls['nome'].errors?.['required']">
+                    O campo "Nome do clolaborador" é obrigatório.
+                </div>
+            </div>
+            <!-- Fim do bloco nome -->
+
+            <!-- Inicio do bloco cargo -->
+            <div class="form-group">
+                <label class="fw-bold" for="cargo">Cargo:</label>
+                <input class="form-control" type="text" placeholder="Insira o cargo" formControlName="cargo" #cargo>
+            </div>
+            <!-- Mensagem de alerta -->
+            <div *ngIf="colaboradorForm.controls['cargo'].invalid && (colaboradorForm.controls['cargo'].dirty || colaboradorForm.controls['cargo'].touched)"
+                class="alert alert-danger p-2 m-2">
+                <div *ngIf="colaboradorForm.controls['cargo'].errors?.['required']">
+                   Insira o cargo!
+                </div>
+            </div>
+            <!-- Fim do bloco cargo -->
+
+            <!-- Inicio do bloco salary -->
+            <div class="form-group">
+                <label class="fw-bold" for="salary">Salario:</label>
+                <input class="form-control" type="text" placeholder="Somente números" formControlName="salary" #salary>
+            </div>
+            <!-- Mensagem de alerta -->
+            <div *ngIf="colaboradorForm.controls['salary'].invalid && (colaboradorForm.controls['salary'].dirty || colaboradorForm.controls['salary'].touched)"
+                class="alert alert-danger p-2 m-2">
+                <div *ngIf="colaboradorForm.controls['salary'].errors?.['required']">
+                   Um salário é requerido.
+                </div>
+            </div>
+            <!-- Fim do bloco salary -->
+
+            <!-- Inicio do bloco data_nascimento -->
+            <div class="form-group">
+                <label class="fw-bold" for="data_nascimento">Data de nascimento:</label>
+                <input class="form-control" type="date" formControlName="data_nascimento" #data_nascimento>
+            </div>
+            <!-- Mensagem de alerta -->
+            <div *ngIf="colaboradorForm.controls['data_nascimento'].invalid && (colaboradorForm.controls['data_nascimento'].dirty || colaboradorForm.controls['data_nascimento'].touched)"
+                class="alert alert-danger p-2 m-2">
+                <div *ngIf="colaboradorForm.controls['data_nascimento'].errors?.['required']">
+                   Selecione uma data de nascimento.
+                </div>
+            </div>
+            <!-- Fim do bloco data_nascimento -->
+
+            <!-- Inicio do bloco matricula -->
+            <div class="form-group">
+                <label class="fw-bold" for="matricula">Matricula:</label>
+                <input class="form-control" type="text" placeholder="Digite a matrícula" formControlName="matricula" #matricula>
+            </div>
+            <!-- Mensagem de alerta -->
+            <div *ngIf="colaboradorForm.controls['matricula'].invalid && (colaboradorForm.controls['matricula'].dirty || colaboradorForm.controls['matricula'].touched)"
+                class="alert alert-danger p-2 m-2">
+                <div *ngIf="colaboradorForm.controls['matricula'].errors?.['required']">
+                   É necessário informar uma matrícula.
+                </div>
+            </div>
+            <!-- Fim do bloco matricula -->
+        </form>
+    </div>
+</div>

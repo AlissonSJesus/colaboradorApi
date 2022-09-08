@@ -8,6 +8,7 @@ import { ColaboradorEditComponent } from './colaborador-edit/colaborador-edit.co
 import { ColaboradorGetComponent } from './colaborador-get/colaborador-get.component';
 
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoadingBarModule
+    LoadingBarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
