@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ColaboradorService } from '../colaborador.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ColaboradorAddComponent implements OnInit {
   colaboradorForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private colaboradorService: ColaboradorService) {
+
     this.createForm();
   }
 
@@ -25,6 +27,16 @@ export class ColaboradorAddComponent implements OnInit {
       data_nascimento: ['', Validators.required],
       matricula: ['', Validators.required]
     });
+  }
+
+  createColaborador(nome: string, cargo: string, salary: any, data_nascimento: any, matricula: any){
+    return this.colaboradorService.creatColaborador(
+      nome,
+      cargo,
+      salary,
+      data_nascimento,
+      matricula
+    )
   }
 
 }
