@@ -6,7 +6,7 @@
  */
 
 export default class Colaborador {
-    name!: string;
+    nome!: string;
     cargo!: string;
     salary!: number; 
     data_nascimento!: Date;

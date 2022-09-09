@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ColaboradorService } from '../colaborador.service';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -29,7 +30,16 @@ export class ColaboradorAddComponent implements OnInit {
     });
   }
 
-  createColaborador(nome: string, cargo: string, salary: any, data_nascimento: any, matricula: any){
+  /**
+   * Método responsável por adcionar um novo colaborador
+   * @param nome
+   * @param cargo 
+   * @param salary 
+   * @param data_nascimento 
+   * @param matricula 
+   * @returns 
+   */
+  createColaborador(nome: string, cargo: string, salary: any, data_nascimento: any, matricula: any) {
     return this.colaboradorService.creatColaborador(
       nome,
       cargo,
@@ -37,6 +47,14 @@ export class ColaboradorAddComponent implements OnInit {
       data_nascimento,
       matricula
     )
+  }
+
+  mostrarSucesso() { 
+    Swal.fire({
+      icon: 'success',
+      title: 'Sucesso!',
+      text: 'Colaborador registrado.'
+    })
   }
 
 }

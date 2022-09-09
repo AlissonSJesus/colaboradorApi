@@ -7,6 +7,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2'
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,17 @@ export class ColaboradorService {
     console.log(colaborador);
 
     // ==> (POST - url no back-end): http://localhost:3000/api/colaboradores
-    this.http.post(`${this.url}/colaboradores`, colaborador).subscribe(res => console.log('Feito'));
+    const confirm = this.http.post(`${this.url}/colaboradores`, colaborador).subscribe(res => console.log('Feito'));
+    if (confirm) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Sucesso!',
+        text: 'Colaborador registrado.'
+      })
+    }
+  }
+
+  getColaborador(){
+    return this.http.get(`${this.url}/colaboradores`);
   }
 }
