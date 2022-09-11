@@ -14,6 +14,7 @@ import Swal from 'sweetalert2'
 })
 export class ColaboradorService {
   url = 'http://localhost:3000/api'; // ==> Vindo do back-end
+  colaboradorId: any;
 
   constructor(private http: HttpClient) {
 
@@ -44,7 +45,42 @@ export class ColaboradorService {
     }
   }
 
-  getColaborador(){
+  /**
+   * Médtodo responsável por listar 'Colaborador', através de um GET
+   * @returns 
+   */
+  getColaborador() {
+    // ==> (GET - url no back-end): http://localhost:3000/api/colaboradores
     return this.http.get(`${this.url}/colaboradores`);
+  }
+
+ /**
+  * Método responsável por editar um determinado 'Colaborador'
+  * @param id 
+  */
+  editColaborador(id: any) { 
+    // ==> (PUT - url no back-end): http://localhost:3000/api/colaboradores
+    return this.http.get(`${this.url}/colaboradores/${id}`);
+  }
+
+  /**
+   * Método responsável pelo evento do botão Atualizar no edit.component.html
+   * @param nome
+   * @param cargo 
+   * @param salary 
+   * @param data_nascimento 
+   * @param matricula 
+   * @param id 
+   */
+  updatetColaborador(nome: string, cargo: string, salary: number, data_nascimento: Date, matricula: number, id: any) {
+    const colaborador = {
+      nome,
+      cargo,
+      salary,
+      data_nascimento,
+      matricula
+    };
+    // ==> (PUT - url no back-end): http://localhost:3000/api/colaboradores
+    this.http.put(`${this.url}/colaboradores/${id}`, colaborador);
   }
 }

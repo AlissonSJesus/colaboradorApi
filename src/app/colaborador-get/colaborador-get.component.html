@@ -17,7 +17,7 @@
             <td>{{colaborador.salary}}</td>
             <td>{{colaborador.data_nascimento}}</td>
             <td>{{colaborador.matricula}}</td>
-            <td><a class="btn btn-success"><i class="fa-solid fa-pencil me-2"></i>Editar</a></td>
+            <td><a class="btn btn-success" [routerLink]="['/colaborador', colaborador.id]"><i class="fa-solid fa-pencil me-2"></i>Editar</a></td>
             <td><button class="btn btn-danger"><i class="fa-solid fa-trash me-2"></i>Deletar</button></td>
         </tr>
     </tbody>
