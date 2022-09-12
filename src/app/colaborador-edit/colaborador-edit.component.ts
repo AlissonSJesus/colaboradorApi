@@ -14,6 +14,7 @@ export class ColaboradorEditComponent implements OnInit {
   colaborador: any = {};
   colaboradorForm!: FormGroup;
   colaboradores!: Colaborador[];
+  colaboradorId: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,22 +27,16 @@ export class ColaboradorEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.colaboradorService.editColaborador(params['id']).subscribe(
-        res => {
-          this.colaborador = res;
-          console.log("Colaborador:", this.colaborador);
+      this.colaboradorService.editColaborador(params['id']).subscribe((res: any) => {
+        this.colaborador = res;
+        this.colaboradorForm.setValue({
+          nome: this.colaborador.nome,
+          cargo: this.colaborador.cargo,
+          salary: this.colaborador.salary,
+          data_nascimento: this.colaborador.data_nascimento,
+          matricula: this.colaborador.matricula
         });
-      // ==> Setando os valores nos inputs do form:
-      // if (this.colaborador) {
-      //   this.colaboradorForm.setValue({
-      //     nome: this.colaborador.nome,
-      //     cargo: this.colaborador.cargo,
-      //     salary: this.colaborador.salary,
-      //     data_nascimeto: this.colaborador.data_nascimento,
-      //     matricula: this.colaborador.matricula
-      //   });
-      // }
-
+      });
     });
   }
 
@@ -68,9 +63,11 @@ export class ColaboradorEditComponent implements OnInit {
    * @param id 
    */
   updateColaborador(nome: string, cargo: string, salary: any, data_nascimento: any, matricula: any, id?: any) {
-    this.activatedRoute.params.subscribe(params => this.colaboradorService.updatetColaborador(nome, cargo, salary, data_nascimento, matricula, params[id]));
+    this.activatedRoute.params.subscribe(params => {
+      this.colaboradorService.updatetColaborador(nome, cargo, salary, data_nascimento, matricula, params['id']);
+    });
     // ==> Depois que o usuário clicar no botão "Atualizar" será redirecionado para a página que lista os colaboradores.
-    this.router.navigate(["colaboradores"]);
+    this.router.navigate(["colaborador"]);
     Swal.fire({
       icon: 'success',
       title: 'Sucesso!',

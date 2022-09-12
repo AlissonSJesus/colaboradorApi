@@ -14,6 +14,9 @@ export class ColaboradorGetComponent implements OnInit {
   constructor(private colaboradorService: ColaboradorService) { }
 
   ngOnInit(): void {
-    this.colaboradorService.getColaborador().subscribe((data: any) => {this.colaboradores = data;});
+    this.colaboradorService.getColaborador().subscribe((data: any) => {
+      this.colaboradores = data;
+      console.log('Colaboradores:', this.colaboradores);
+    });
   }
 }

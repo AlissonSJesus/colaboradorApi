@@ -32,8 +32,6 @@ export class ColaboradorService {
       data_nascimento,
       matricula
     };
-    console.log(colaborador);
-
     // ==> (POST - url no back-end): http://localhost:3000/api/colaboradores
     const confirm = this.http.post(`${this.url}/colaboradores`, colaborador).subscribe(res => console.log('Feito'));
     if (confirm) {
@@ -55,11 +53,11 @@ export class ColaboradorService {
   }
 
  /**
-  * Método responsável por editar um determinado 'Colaborador'
+  * Método responsável por editar um determinado 'Colaborador' por Id
   * @param id 
   */
   editColaborador(id: any) { 
-    // ==> (PUT - url no back-end): http://localhost:3000/api/colaboradores
+    // ==> (GET - url no back-end): http://localhost:3000/api/colaboradores
     return this.http.get(`${this.url}/colaboradores/${id}`);
   }
 
@@ -81,6 +79,6 @@ export class ColaboradorService {
       matricula
     };
     // ==> (PUT - url no back-end): http://localhost:3000/api/colaboradores
-    this.http.put(`${this.url}/colaboradores/${id}`, colaborador);
+    this.http.put(`${this.url}/colaboradores/${id}`, colaborador).subscribe(res => console.log('Done!'));
   }
 }

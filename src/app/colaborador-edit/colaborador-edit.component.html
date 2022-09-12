@@ -73,7 +73,7 @@
             </div>
             <!-- Fim do bloco matricula -->
             <div class="form-group">
-                <button class="btn btn-warning mt-3" (click)="updateColaborador(nome.value, cargo.value, salary.value, data_nascimento.value, matricula.value)" [disabled]="colaboradorForm.pristine || colaboradorForm.invalid"><i class="fa-solid fa-recycle me-2"></i>Atualizar</button>
+                <button type="submit" class="btn btn-warning mt-3" (click)="updateColaborador(nome.value, cargo.value, salary.value, data_nascimento.value, matricula.value)" [disabled]="colaboradorForm.pristine || colaboradorForm.invalid"><i class="fa-solid fa-recycle me-2"></i>Atualizar</button>
             </div>
         </form>
     </div>
