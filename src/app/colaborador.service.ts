@@ -52,11 +52,11 @@ export class ColaboradorService {
     return this.http.get(`${this.url}/colaboradores`);
   }
 
- /**
-  * Método responsável por editar um determinado 'Colaborador' por Id
-  * @param id 
-  */
-  editColaborador(id: any) { 
+  /**
+   * Método responsável por editar um determinado 'Colaborador' por Id
+   * @param id 
+   */
+  editColaborador(id: any) {
     // ==> (GET - url no back-end): http://localhost:3000/api/colaboradores
     return this.http.get(`${this.url}/colaboradores/${id}`);
   }
@@ -79,6 +79,16 @@ export class ColaboradorService {
       matricula
     };
     // ==> (PUT - url no back-end): http://localhost:3000/api/colaboradores
-    this.http.put(`${this.url}/colaboradores/${id}`, colaborador).subscribe(res => console.log('Done!'));
+    return this.http.put(`${this.url}/colaboradores/${id}`, colaborador).subscribe(res => console.log('Done!'));
+  }
+
+  /**
+   * Método responsável por deletar 'Colaborador'
+   * @param id 
+   * @returns 
+   */
+  deleteColaborador(id: any) {
+    // ==> (DELETE - url no back-end): http://localhost:3000/api/colaboradores
+    return this.http.delete(`${this.url}/colaboradores/${id}`);
   }
 }
